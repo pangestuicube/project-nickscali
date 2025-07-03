@@ -1,3 +1,7 @@
+*** Settings ***
+Documentation       This file contains locators for shopping cart page
+
+
 *** Variables ***
 # https://prnt.sc/8Y_KwRemz18Y
 ${CHECKOUT_BUTTON}          (//button[text()='Checkout'])[1]

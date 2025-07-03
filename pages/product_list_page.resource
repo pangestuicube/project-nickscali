@@ -1,8 +1,10 @@
 *** Settings ***
-Library         SeleniumLibrary
-Library         String
-Resource        ../resources/locators/product_list_page_locator.resource
-Variables       ../resources/data/testdata.py
+Documentation       This file contains keywords for product list page
+
+Library             String
+Library             SeleniumLibrary
+Resource            ../resources/locators/product_list_page_locator.resource
+Variables           ../resources/data/testdata.py
 
 
 *** Keywords ***

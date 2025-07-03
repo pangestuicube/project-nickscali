@@ -1,3 +1,7 @@
+*** Settings ***
+Documentation       This file contains locators for homepage locator
+
+
 *** Variables ***
 # https://prnt.sc/RaYtZ6SpMFbI
 ${SEARCH_BUTTON}        //div[@class='cursor-pointer']

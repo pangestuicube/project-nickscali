@@ -1,7 +1,9 @@
 *** Settings ***
-Library         SeleniumLibrary
-Resource        ../resources/locators/homepage_locator.resource
-Variables       ../resources/data/testdata.py
+Documentation       This file contains keywords for homepage
+
+Library             SeleniumLibrary
+Resource            ../resources/locators/homepage_locator.resource
+Variables           ../resources/data/testdata.py
 
 
 *** Keywords ***

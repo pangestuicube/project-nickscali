@@ -1,9 +1,11 @@
 *** Settings ***
-Library         String
-Library         SeleniumLibrary
-Resource        ../resources/locators/product_detail_page_locator.resource
-Resource        ../resources/locators/shopping_cart_locator.resource
-Variables       ../resources/data/testdata.py
+Documentation       This file contains keywords for product detail page
+
+Library             String
+Library             SeleniumLibrary
+Resource            ../resources/locators/product_detail_page_locator.resource
+Resource            ../resources/locators/shopping_cart_locator.resource
+Variables           ../resources/data/testdata.py
 
 
 *** Keywords ***
@@ -34,7 +36,6 @@ Check Available Delivery
 
 ADD TO BAG
     [Documentation]    Add product to shopping bag
-    [Arguments]    ${product_name_on_pdp}
     Scroll Element Into View    locator=${ADD_TO_BAG_BUTTON}
     Wait Until Element Is Enabled    locator=${ADD_TO_BAG_BUTTON}    timeout=${TIMEOUT_LONG}
     Click Element    locator=${ADD_TO_BAG_BUTTON}

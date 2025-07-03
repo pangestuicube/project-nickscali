@@ -1,3 +1,11 @@
+*** Comments ***
+# robocop: disable=line-too-long
+
+
+*** Settings ***
+Documentation       This file contains locators for product detail page
+
+
 *** Variables ***
 # https://prnt.sc/-vlJ_k9Qsr6K
 ${SUBURB_INPUT}                     //input[@placeholder='Enter postcode or suburb']

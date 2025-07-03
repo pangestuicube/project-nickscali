@@ -1,3 +1,7 @@
+*** Settings ***
+Documentation       This file contains locators for product list page
+
+
 *** Variables ***
 # https://prnt.sc/wFIvBjIMq2MY
 ${PRODUCT_CARD}         //section//ul//li/a

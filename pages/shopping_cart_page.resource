@@ -1,8 +1,10 @@
 *** Settings ***
-Library     String
-Library     SeleniumLibrary
-Resource    ../base/base.resource
-Resource    ../resources/locators/shopping_cart_locator.resource
+Documentation       This file contains keywords for shopping cart page
+
+Library             String
+Library             SeleniumLibrary
+Resource            ../base/base.resource
+Resource            ../resources/locators/shopping_cart_locator.resource
 
 
 *** Keywords ***

@@ -1,8 +1,10 @@
 *** Settings ***
-Library         String
-Library         SeleniumLibrary
-Variables       ../resources/data/testdata.py
-Resource        ../resources/locators/homepage_locator.resource
+Documentation       This file contains keywords for general use
+
+Library             String
+Library             SeleniumLibrary
+Variables           ../resources/data/testdata.py
+Resource            ../resources/locators/homepage_locator.resource
 
 
 *** Keywords ***
