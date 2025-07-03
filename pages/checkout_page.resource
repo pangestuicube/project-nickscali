@@ -58,10 +58,3 @@ Select Adyen Credit Card Payment Method
     Scroll Element Into View    locator=${ADYEN_CREDIT_CARD_PAYMENT_METHOD}
     Wait Until Element Is Enabled    locator=${ADYEN_CREDIT_CARD_PAYMENT_METHOD}    timeout=${TIMEOUT_LONG}
     Click Element    locator=${ADYEN_CREDIT_CARD_PAYMENT_METHOD}
-
-Input Adyen Credit Card Number
-    [Documentation]    Input adyen credit card number in checkout page
-    Wait Until Page Contains Element    locator=${ADYEN_CREDIT_CARD_NUMBER_INPUT}    timeout=${TIMEOUT_LONG}
-    Scroll Element Into View    locator=${ADYEN_CREDIT_CARD_NUMBER_INPUT}
-    Wait Until Element Is Enabled    locator=${ADYEN_CREDIT_CARD_NUMBER_INPUT}    timeout=${TIMEOUT_LONG}
-    Input Text    locator=${ADYEN_CREDIT_CARD_NUMBER_INPUT}    text=${ADYEN_CREDIT_CARD_NUMBER}
