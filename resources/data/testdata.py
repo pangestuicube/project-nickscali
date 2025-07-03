@@ -7,7 +7,7 @@ TIMEOUT_LONG = 30
 BASE_URL = "https://nickscaliv2-nz-headless.sandbox.id/"
 
 # Product
-SEARCH_PRODUCT_KEYWORD = "Rimowar"
+SEARCH_PRODUCT_KEYWORD = "dream"
 
 # Address
 SUBURB_WITH_POSTCODE = "EDEN TERRACE, 1021"

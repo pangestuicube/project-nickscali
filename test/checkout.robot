@@ -1,6 +1,8 @@
 *** Settings ***
 Library             SeleniumLibrary
-Resource            ../resources/locators/checkout_page_locator.resource
+Resource            ../pages/shopping_cart_page.resource
+Resource            ../pages/product_list_page.resource
+Resource            ../pages/product_detail_page.resource
 Resource            ../pages/homepage.resource
 Variables           ../resources/data/testdata.py
 Resource            ../base/base.resource
@@ -13,5 +15,12 @@ Test Teardown       setup.End Test
 *** Test Cases ***
 Guest Checkout - Successful Purchase Using Credit Card
     [Documentation]    Guest Checkout - Successful Purchase Using Credit Card
-    homepage.Fill Search Box    keyword==${SEARCH_PRODUCT_KEYWORD}
-    
+    homepage.Fill Search Box    keyword=${SEARCH_PRODUCT_KEYWORD}
+    product_list_page.Validate Search Result    search_keyword=${SEARCH_PRODUCT_KEYWORD}
+    ${plp_product_name}    product_list_page.Click Product Card
+    ${pdp_product_name}    product_detail_page.Validate PDP Product Name    plp_product_name=${plp_product_name}
+    product_detail_page.Check Available Delivery
+    ${pdp_product_total_price}    product_detail_page.Get Product PDP Total Price
+    product_detail_page.ADD TO BAG    base_product_name=${pdp_product_name}
+    shopping_cart_page.Validate Shopping Cart Product Name    pdp_product_name=${pdp_product_name}
+    shopping_cart_page.Validate Shopping Cart Product Price    pdp_product_price=${pdp_product_total_price}

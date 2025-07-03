@@ -1,8 +1,8 @@
 *** Settings ***
-Library         String
-Library         SeleniumLibrary
-Resource        ../resources/locators/shoping_cart_locator.resource
-Variables       ../resources/data/testdata.py
+Library     String
+Library     SeleniumLibrary
+Resource    ../base/base.resource
+Resource    ../resources/locators/shopping_cart_locator.resource
 
 
 *** Keywords ***
@@ -14,16 +14,30 @@ Click On Checkout
     Wait Until Element Is Not Visible    locator=${CHECKOUT_BUTTON}    timeout=${TIMEOUT_LONG}
     RETURN    ${ORDER_TOTAL}
 
-Validate Product Name
+Validate Shopping Cart Product Name
     [Documentation]    Validate product name in product detail page with product name in product detail page
-    [Arguments]    ${base_product_name}
-    ${Shoping_Cart_Product_Name}    Get Text    locator=${SC_PRODUCT_NAME}
-    ${Shoping_Cart_Product_Name}    String.Convert To Lower Case    ${Shoping_Cart_Product_Name}
-    ${base_product_name}    String.Convert To Lower Case    string=${base_product_name}
-    Should Be Equal As Strings    ${Shoping_Cart_Product_Name}    ${base_product_name}
+    [Arguments]    ${pdp_product_name}
+    ${get_sc_product_name}    Get Shopping Cart Product Name
+    ${sc_product_name}    String.Convert To Lower Case    ${get_sc_product_name}
+    ${pdp_product_name}    String.Convert To Lower Case    ${pdp_product_name}
+    Should Be Equal As Strings    ${sc_product_name}    ${pdp_product_name}
+
+Validate Shopping Cart Product Price
+    [Documentation]    Validate product price in product detail page with product price in product detail page
+    [Arguments]    ${pdp_product_price}
+    ${get_sc_price}    Get Shopping Cart Order Total
+    ${sc_product_price}    base.Normalize Price Value    price_value=${get_sc_price}
+    ${pdp_product_price}    base.Normalize Price Value    price_value=${pdp_product_price}
+    Should Be Equal As Strings    ${sc_product_price}    ${pdp_product_price}
 
 Get Shopping Cart Order Total
     [Documentation]    Get shopping cart order total
-    Wait Until Element Is Visible    locator=${SC_ORDER_TOTAL}    timeout=${TIMEOUT_LONG}
-    ${Shopping_Cart_Order_Total}    Get Text    locator=${SC_ORDER_TOTAL}
+    Wait Until Element Is Visible    locator=${SC_ORDER_TOTAL_TXT}    timeout=${TIMEOUT_LONG}
+    ${Shopping_Cart_Order_Total}    Get Text    locator=${SC_ORDER_TOTAL_TXT}
     RETURN    ${Shopping_Cart_Order_Total}
+
+Get Shopping Cart Product Name
+    [Documentation]    Get shopping cart product name
+    Wait Until Element Is Visible    locator=${SC_PRODUCT_NAME_TXT}    timeout=${TIMEOUT_LONG}
+    ${Shopping_Cart_Product_Name}    Get Text    locator=${SC_PRODUCT_NAME_TXT}
+    RETURN    ${Shopping_Cart_Product_Name}

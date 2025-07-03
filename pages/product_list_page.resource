@@ -8,16 +8,20 @@ Variables       ../resources/data/testdata.py
 *** Keywords ***
 Click Product Card
     [Documentation]    Click product card in product list
+    Wait Until Page Contains Element    locator=${PRODUCT_CARD_NAME}    timeout=${TIMEOUT_LONG}
+    Scroll Element Into View    locator=${PRODUCT_CARD_NAME}
     ${product_name}    Get Text    locator=${PRODUCT_CARD_NAME}
     Wait Until Element Is Enabled    locator=${PRODUCT_CARD}    timeout=${TIMEOUT_LONG}
     Click Element    locator=${PRODUCT_CARD}
-    Wait Until Element Is Visible    locator=${PRODUCT_CARD_NAME}    timeout=${TIMEOUT_LONG}
+    Wait Until Element Is Not Visible    locator=${PRODUCT_CARD}    timeout=${TIMEOUT_LONG}
     RETURN    ${product_name}
 
-Validate Product Name
+Validate Search Result
     [Documentation]    Validate product name in product detail page with product name in product list
-    [Arguments]    ${product_name}
-    ${pdp_product_name}    Get Text    locator=${PRODUCT_NAME}
-    ${product_name}    String.Convert To Lower Case    string=${product_name}
-    ${pdp_product_name}    String.Convert To Lower Case    string=${pdp_product_name}
-    Should Be Equal As Strings    ${product_name}    ${pdp_product_name}
+    [Arguments]    ${search_keyword}
+    Wait Until Page Contains Element    locator=${PRODUCT_CARD_NAME}    timeout=${TIMEOUT_LONG}
+    Scroll Element Into View    locator=${PRODUCT_CARD_NAME}
+    ${pdp_product_name}    Get Text    locator=${PRODUCT_CARD_NAME}
+    ${search_keyword_lower}    Convert To Lowercase    ${search_keyword}
+    ${pdp_product_name_lower}    Convert To Lowercase    ${pdp_product_name}
+    Should Contain    ${pdp_product_name_lower}    ${search_keyword_lower}
