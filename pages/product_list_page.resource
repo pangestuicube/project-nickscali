@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation       This file contains keywords for product list page
 
+Library             Collections
 Library             String
 Library             SeleniumLibrary
 Resource            ../resources/locators/product_list_page_locator.resource
@@ -21,9 +22,32 @@ Click Product Card
 Validate Search Result
     [Documentation]    Validate product name in product detail page with product name in product list
     [Arguments]    ${search_keyword}
+    ${keywod}    Convert To Lower Case    ${search_keyword}
+    @{product_names}    Get All PLP Product Names
+    FOR    ${product_name}    IN    @{product_names}
+        ${product_name_lower}    Convert To Lowercase    ${product_name}
+        Should Contain    ${product_name_lower}    ${keywod}
+    END
+
+Get All PLP Product Names
+    [Documentation]    Get All product name in product list page
     Wait Until Page Contains Element    locator=${PRODUCT_CARD_NAME}    timeout=${TIMEOUT_LONG}
-    Scroll Element Into View    locator=${PRODUCT_CARD_NAME}
-    ${pdp_product_name}    Get Text    locator=${PRODUCT_CARD_NAME}
-    ${search_keyword_lower}    Convert To Lowercase    ${search_keyword}
-    ${pdp_product_name_lower}    Convert To Lowercase    ${pdp_product_name}
-    Should Contain    ${pdp_product_name_lower}    ${search_keyword_lower}
+    ${total_result}    Get Element Count    locator=${PRODUCT_CARD_NAME}
+    ${search_result_list}    Create List
+    FOR    ${item}    IN RANGE    1    ${total_result}
+        Scroll Element Into View    ${PRODUCT_CARD_NAME_INDEX.format(${item})}
+        ${plp_product_item_name}    Get Text    ${PRODUCT_CARD_NAME_INDEX.format(${item})}
+        Append To List    ${search_result_list}    ${plp_product_item_name}
+    END
+    RETURN    ${search_result_list}
+
+# Get All PLP Product Names
+#    [Documentation]    Get All product name in product list page
+#    Wait Until Page Contains Element    locator=${PRODUCT_CARD_NAME}    timeout=${TIMEOUT_LONG}
+#    ${product_name_elements}    Get WebElements    locator=${PRODUCT_CARD_NAME}
+#    ${product_names_list}    Create List
+#    FOR    ${element}    IN    @{product_name_elements}
+#    ${product_name}    Get Text    ${element}
+#    Append To List    ${product_names_list}    ${product_name}
+#    END
+#    RETURN    ${product_names_list}

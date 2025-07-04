@@ -1,5 +1,6 @@
 *** Comments ***
 # robocop: disable=too-many-calls-in-test-case
+# robocop: disable=too-long-test-case
 
 
 *** Settings ***
@@ -17,7 +18,7 @@ Resource            ../setup/setup.resource
 Resource            ../pages/checkout_page.resource
 
 Test Setup          setup.Start Test Case
-# Test Teardown    setup.End Test
+Test Teardown       setup.End Test
 
 
 *** Test Cases ***
