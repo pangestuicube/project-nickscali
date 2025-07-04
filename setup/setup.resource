@@ -1,9 +1,11 @@
 *** Settings ***
-Library     Collections
-Library     OperatingSystem
-Library     String
-Library     SeleniumLibrary
-Resource    ../base/base.resource
+Documentation       This file contains keywords for setup webdriver and browser
+
+Library             Collections
+Library             OperatingSystem
+Library             String
+Library             SeleniumLibrary
+Resource            ../base/base.resource
 
 
 *** Variables ***

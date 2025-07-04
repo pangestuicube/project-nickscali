@@ -1,3 +1,7 @@
+*** Comments ***
+# robocop: disable=too-many-calls-in-test-case
+
+
 *** Settings ***
 Documentation       This file contains test cases for checkout
 
@@ -7,6 +11,7 @@ Resource            ../pages/product_list_page.resource
 Resource            ../pages/product_detail_page.resource
 Resource            ../pages/homepage.resource
 Variables           ../resources/data/testdata.py
+Resource            ../pages/thankyou_page.resource
 Resource            ../base/base.resource
 Resource            ../setup/setup.resource
 Resource            ../pages/checkout_page.resource
@@ -34,3 +39,7 @@ Guest Checkout - Successful Purchase Using Credit Card
     checkout_page.Check Terms And Conditions Checkbox
     checkout_page.Click Next Payment Button
     checkout_page.Select Adyen Credit Card Payment Method
+    checkout_page.Input Adyen Credit Card Details
+    checkout_page.Click Pay Button
+    thankyou_page.Validate User Redirect To Thank You Page
+    thankyou_page.Click Continue Shopping Button

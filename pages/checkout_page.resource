@@ -58,3 +58,40 @@ Select Adyen Credit Card Payment Method
     Scroll Element Into View    locator=${ADYEN_CREDIT_CARD_PAYMENT_METHOD}
     Wait Until Element Is Enabled    locator=${ADYEN_CREDIT_CARD_PAYMENT_METHOD}    timeout=${TIMEOUT_LONG}
     Click Element    locator=${ADYEN_CREDIT_CARD_PAYMENT_METHOD}
+
+Input Adyen Credit Card Details
+    [Documentation]    Input adyen credit card details in checkout page
+    Wait Until Page Contains Element    locator=${ADYEN_CC_CARD_NUMBER_IFRAME_XPATH}    timeout=${TIMEOUT_LONG}
+    Select Frame    locator=${ADYEN_CC_CARD_NUMBER_IFRAME_XPATH}
+    Wait Until Page Contains Element    locator=${ADYEN_CC_CARD_NUMBER_INPUT}    timeout=${TIMEOUT_LONG}
+    Scroll Element Into View    locator=${ADYEN_CC_CARD_NUMBER_INPUT}
+    Wait Until Element Is Enabled    locator=${ADYEN_CC_CARD_NUMBER_INPUT}    timeout=${TIMEOUT_LONG}
+    Input Text    locator=${ADYEN_CC_CARD_NUMBER_INPUT}    text=${ADYEN_CC_CARD_NUMBER}
+    Unselect Frame
+
+    Wait Until Page Contains Element    locator=${ADYEN_CC_EXPIRY_DATE_IFRAME_XPATH}    timeout=${TIMEOUT_LONG}
+    Select Frame    locator=${ADYEN_CC_EXPIRY_DATE_IFRAME_XPATH}
+    Wait Until Page Contains Element    locator=${ADYEN_CC_EXPIRY_DATE_INPUT}    timeout=${TIMEOUT_LONG}
+    Scroll Element Into View    locator=${ADYEN_CC_EXPIRY_DATE_INPUT}
+    Wait Until Element Is Enabled    locator=${ADYEN_CC_EXPIRY_DATE_INPUT}    timeout=${TIMEOUT_LONG}
+    Input Text    locator=${ADYEN_CC_EXPIRY_DATE_INPUT}    text=${ADYEN_CC_EXPIRY_DATE}
+    Unselect Frame
+
+    Select Frame    locator=${ADYEN_CC_SECURITY_CODE_IFRAME_XPATH}
+    Wait Until Page Contains Element    locator=${ADYEN_CC_SECURITY_CODE_INPUT}    timeout=${TIMEOUT_LONG}
+    Scroll Element Into View    locator=${ADYEN_CC_SECURITY_CODE_INPUT}
+    Wait Until Element Is Enabled    locator=${ADYEN_CC_SECURITY_CODE_INPUT}    timeout=${TIMEOUT_LONG}
+    Input Text    locator=${ADYEN_CC_SECURITY_CODE_INPUT}    text=${ADYEN_CC_SECURITY_CODE}
+    Unselect Frame
+
+    Scroll Element Into View    locator=${ADYEN_CC_NAME_ON_CARD_INPUT}
+    Wait Until Element Is Enabled    locator=${ADYEN_CC_NAME_ON_CARD_INPUT}    timeout=${TIMEOUT_LONG}
+    Input Text    locator=${ADYEN_CC_NAME_ON_CARD_INPUT}    text=${ADYEN_CC_NAME_ON_CARD}
+
+Click Pay Button
+    [Documentation]    Click pay button in checkout page
+    Wait Until Page Contains Element    locator=${ADYEN_CC_PAY_BUTTON}    timeout=${TIMEOUT_LONG}
+    Scroll Element Into View    locator=${ADYEN_CC_PAY_BUTTON}
+    Wait Until Element Is Enabled    locator=${ADYEN_CC_PAY_BUTTON}    timeout=${TIMEOUT_LONG}
+    Click Element    locator=${ADYEN_CC_PAY_BUTTON}
+    Wait Until Element Is Not Visible    locator=${ADYEN_CC_PAY_BUTTON}    timeout=${TIMEOUT_LONG}
